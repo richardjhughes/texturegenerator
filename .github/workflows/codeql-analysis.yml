@@ -70,7 +70,7 @@ jobs:
         mkdir ./src/build
         cd ./src/build
         cmake ..
-        cmake --build . -CMAKE_MODULE_PATH=../cmake
+        cmake --build .
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
