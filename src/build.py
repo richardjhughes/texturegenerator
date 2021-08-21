@@ -76,7 +76,7 @@ def get_platform_name():
     else:
         return "windows"
 
-def do_make(no_build):
+def do_make(no_build, no_install):
     print("Making...")
 
     build_dir = os.path.join(cwd, build_dir_name)
@@ -127,8 +127,9 @@ def do_make(no_build):
         cmd = [ctest_path]
         run_cmd_env(cmd, env)
 
-        cmd = [cmake_path, "--install", ".", "--config", "Release"]
-        run_cmd_env(cmd, env)
+        if not no_install:
+            cmd = [cmake_path, "--install", ".", "--config", "Release"]
+            run_cmd_env(cmd, env)
 
     install_src_dir = os.path.join(build_dir, install_dir_name)
     install_dest_dir = os.path.join(cwd, install_dir_name, platform.system())
@@ -221,7 +222,7 @@ args = configure_arguments()
 if args.install_dependencies:
     install_dependencies()
 
-build_dir, install_dir = do_make(args.no_build)
+build_dir, install_dir = do_make(args.no_build, args.no_install)
 
 if not args.no_install:
     do_install(install_dir, args.archive_name)
