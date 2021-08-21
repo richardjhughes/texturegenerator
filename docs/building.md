@@ -22,8 +22,7 @@ After the build, the client, server and data will be copied to the `./src/instal
 install
     + - _platform name_ // Windows/Darwin/Linux
         + - bin
-            + - projectfarm_client // projectfarm_client.exe on Windows
-                any other dependencies
+            // texturegenerator.exe on Windows and any other dependencies
 ```
 
 Note: If `-c` is passed to `build.py`, the `./src/install` directory will be deleted after the build.
