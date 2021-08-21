@@ -6,7 +6,7 @@ Textures are generated using a node tree. The system is designed to be distribut
 This system handles only the texture generation. UIs will be handled in separate projects.
 
 # Documentation
- - [Building] (docs/building.md)
+ - [Building](docs/building.md)
  - [System Design](docs/system_design.md)
  
  ## License
