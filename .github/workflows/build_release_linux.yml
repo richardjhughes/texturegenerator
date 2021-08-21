@@ -36,6 +36,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.version.outputs.upload_url }}
-        asset_path: ./archives/texturegenerator_linux.zip
+        asset_path: ./src/archives/texturegenerator_linux.zip
         asset_name: texturegenerator_linux_${{ steps.build.outputs.VERSION }}.${{ github.run_number }}.zip
         asset_content_type: application/zip

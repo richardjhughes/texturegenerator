@@ -52,7 +52,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.nightly.outputs.upload_url }}
-        asset_path: ./archives/texturegenerator_windows.zip
+        asset_path: ./src/archives/texturegenerator_windows.zip
         asset_name: windows_nightly_${{ steps.build.outputs.RELEASE_DATE }}.zip
         asset_content_type: application/zip
       
