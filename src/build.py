@@ -23,6 +23,7 @@ def configure_arguments():
     parser.add_argument("-ni", "--no-install", action="store_true", required=False, help="do not install after build")
     parser.add_argument("-an", "--archive-name", action="store", required=False, help="what to name the built archive")
     parser.add_argument("-c", "--cleanup", action="store_true", required=False, help="clean up build and install data/temp files after build")
+    parser.add_argument("-d", "--debug", action="store_true", required=False, help="build in debug")
     args = parser.parse_args()
 
     return args
@@ -76,7 +77,7 @@ def get_platform_name():
     else:
         return "windows"
 
-def do_make(no_build, no_install):
+def do_make(no_build, no_install, debug):
     print("Making...")
 
     build_dir = os.path.join(cwd, build_dir_name)
@@ -120,7 +121,8 @@ def do_make(no_build, no_install):
 
         run_cmd_env(cmd, env)
 
-        cmd = [cmake_path, "--build", ".", "--config", "Release", "--verbose"]
+        config = "Debug" if debug else "Release"
+        cmd = [cmake_path, "--build", ".", "--config", f"{config}", "--verbose"]
 
         run_cmd_env(cmd, env)
 
@@ -128,7 +130,7 @@ def do_make(no_build, no_install):
         run_cmd_env(cmd, env)
 
         if not no_install:
-            cmd = [cmake_path, "--install", ".", "--config", "Release"]
+            cmd = [cmake_path, "--install", ".", "--config", f"{config}"]
             run_cmd_env(cmd, env)
 
     install_src_dir = os.path.join(build_dir, install_dir_name)
@@ -222,7 +224,7 @@ args = configure_arguments()
 if args.install_dependencies:
     install_dependencies()
 
-build_dir, install_dir = do_make(args.no_build, args.no_install)
+build_dir, install_dir = do_make(args.no_build, args.no_install, args.debug)
 
 if not args.no_install:
     do_install(install_dir, args.archive_name)
