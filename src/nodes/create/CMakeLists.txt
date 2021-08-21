@@ -1,7 +1,9 @@
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+add_library("${NODES_CREATE_PROJECT_NAME}")
 
-cmake_minimum_required(VERSION 3.15)
-project(create VERSION 1.0.0)
-
-add_executable("${PROJECT_NAME}" main.cpp)
+target_sources(
+    "${NODES_CREATE_PROJECT_NAME}"
+    PUBLIC
+        create.h
+    PRIVATE
+        create.cpp
+)

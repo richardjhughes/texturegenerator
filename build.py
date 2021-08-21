@@ -24,17 +24,7 @@ def makeDir(dir):
 def buildNodes():
     print("Building nodes...")
 
-    nodePath = os.path.join(os.getcwd(), "src", "nodes")
-
-    buildNode(os.path.join(nodePath, "create"))
-
-    print("Built nodes.")
-
-
-def buildNode(path):
-    print(f"Building node at path: '{path}'")
-
-    buildDir = os.path.join(path, "build")
+    buildDir = os.path.join(os.getcwd(), "src", "build")
     makeDir(buildDir)
 
     os.chdir(buildDir)
@@ -45,7 +35,7 @@ def buildNode(path):
     cmd = [cmakePath, "--build", "."]
     runCmd(cmd)
 
-    print(f"Build node at path: '{path}'")
+    print("Built nodes.")
 
 
 print("Building...")
