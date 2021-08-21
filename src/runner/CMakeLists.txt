@@ -11,3 +11,12 @@ target_sources(
     PRIVATE
         main.cpp
 )
+
+install(
+	TARGETS
+		"${RUNNER_PROJECT_NAME}"
+	DESTINATION
+		"${INSTALL_DIRECTORY}"
+)
+
+add_subdirectory("tests")
