@@ -1,13 +1,13 @@
 # Texture Generator
 A system that can generate textures.
 
-Textures are generated using a node tree. The system is designed to be distributed, but can also be run locally.
+Textures are generated using a node tree. The system is designed to be distributed but can also be run locally.
 
-This system handles only the texture generation. UIs will be handled in seperate projects.
+This system handles only the texture generation. UIs will be handled in separate projects.
 
 # System Design
 ## Nodes
-Textures are generated using nodes. Each node is a seperate program, but with a common API, accepting both inputs and outputs. Nodes pass their outputs to the inputs of other nodes, which then process those inputs to create their own outputs. There is no limit on how many nodes one node may call. Nodes are stateless, so a node is able to call itself recursivlyy and is able to be called in parallel. They can be run either locally on a single machine as seperate processes, or in docker containers on a distributed system.
+Textures are generated using nodes. Each node is a separate program, but with a common API, accepting both inputs and outputs. Nodes pass their outputs to the inputs of other nodes, which then process those inputs to create their own outputs. There is no limit on how many nodes one node may call. Nodes are stateless, so a node can call itself recursively and is able to be called in parallel. They can be run either locally on a single machine as separate processes, or in docker containers on a distributed system.
 
 The calling of nodes is controlled by a graph. This graph is passed to the first node in the tree, which then uses the graph to decide which nodes to call next.
 
