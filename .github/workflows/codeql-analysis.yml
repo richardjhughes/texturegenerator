@@ -64,8 +64,8 @@ jobs:
     #    uses a compiled language
 
     - run: |
-      cd ./src
-      python3 ./build.py -ni
+        cd ./src
+        python3 ./build.py -ni
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
