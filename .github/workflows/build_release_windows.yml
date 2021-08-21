@@ -21,7 +21,7 @@ jobs:
       id: build
       run: |
         cd src
-        python3 build.py --install-assets --install-dependencies --archive-name=texturegenerator_windows
+        python3 build.py --install-dependencies --archive-name=texturegenerator_windows
         echo "::set-output name=VERSION::$(python3 ./.github/tools/getversion.py)"
 
     - name: Release Version
