@@ -37,6 +37,8 @@ elseif(APPLE AND CMAKE_SYSTEM_NAME STREQUAL "iOS")
 	set(IOS TRUE)
 endif()
 
+configure_file("${CMAKE_CURRENT_LIST_DIR}/version.h.in" "${CMAKE_CURRENT_LIST_DIR}/version.h")
+
 include("${CMAKE_CURRENT_LIST_DIR}/cmake/libraries.cmake")
 include("${CMAKE_CURRENT_LIST_DIR}/cmake/buildsettings.cmake")
 
