@@ -38,3 +38,13 @@ For instance:
 ```
 texturegenerator-1.2.3-darwin.zip
 ```
+### CLion
+Open the project at the project root and then open the `CMakeLists.txt` file in the `./src` directory. CLion should then prompt you to load the project.
+
+Set the CMake settings as follows:
+
+> Toolchains -> Make -> /*{project_root}*/libraries/ninja/darwin/ninja
+
+> CMake -> Toolchain -> *Set to the toolchain with Ninja as the make tool*
+
+> CMake -> CMake options -> -GNinja -DCMAKE_CXX_COMPILER=/*{project_root}*/src/libraries/clang/darwin/bin/clang++ -DCMAKE_C_COMPILER=/*{project_root}*/src/libraries/clang/darwin/bin/clang
