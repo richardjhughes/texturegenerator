@@ -1,5 +1,4 @@
-#ifndef TEXTUREGENERATOR_RUNNER_H
-#define TEXTUREGENERATOR_RUNNER_H
+#pragma once
 
 #include <cstdint>
 #include <string>
@@ -21,5 +20,3 @@ namespace texturegenerator {
         std::vector<std::string> _args;
     };
 }
-
-#endif

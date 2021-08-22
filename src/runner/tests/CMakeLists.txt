@@ -1,3 +1,5 @@
+set(RUNNER_TEST_PROJECT_NAME "${RUNNER_PROJECT_NAME}_tests")
+
 add_executable(
     "${RUNNER_TEST_PROJECT_NAME}"
     main.cpp
@@ -7,7 +9,6 @@ add_executable(
 target_link_libraries(
     "${RUNNER_TEST_PROJECT_NAME}"
     Catch2::Catch2
-    "${NODES_CREATE_PROJECT_NAME}"
 )
 
 target_include_directories(

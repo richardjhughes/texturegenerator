@@ -1,5 +1,5 @@
 #include "color.h"
 
-namespace texturegenerator {
+namespace texturegenerator::shared {
 
 }

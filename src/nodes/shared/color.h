@@ -1,9 +1,8 @@
-#ifndef TEXTUREGENERATOR_COLOR_H
-#define TEXTUREGENERATOR_COLOR_H
+#pragma once
 
 #include <cstdint>
 
-namespace texturegenerator {
+namespace texturegenerator::shared {
     struct color {
         uint8_t r {0};
         uint8_t g {0};
@@ -11,5 +10,3 @@ namespace texturegenerator {
         uint8_t a {0};
     };
 }
-
-#endif

@@ -1,15 +1,9 @@
-//
-// Created by Richard Hughes on 8/22/21.
-//
+#pragma once
 
-#ifndef TEXTUREGENERATOR_COLOR_H
-#define TEXTUREGENERATOR_COLOR_H
+#include <cstdint>
 
+#include "nodes/shared/color.h"
 
-class color
-{
-
-};
-
-
-#endif //TEXTUREGENERATOR_COLOR_H
+namespace texturegenerator::nodes::color {
+    void run(const shared::color& color, int32_t origin, uint32_t frame_width, uint32_t frame_height);
+}
