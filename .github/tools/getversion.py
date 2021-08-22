@@ -8,7 +8,7 @@ file_contents = ""
 with open(makefile_dir) as f:
     file_contents = f.read()
 
-match = re.search(r'projectfarm VERSION (\d+\.\d+\.\d+)', file_contents)
+match = re.search(r'texturegenerator VERSION (\d+\.\d+\.\d+)', file_contents)
 
 version = match.group(1)
 
