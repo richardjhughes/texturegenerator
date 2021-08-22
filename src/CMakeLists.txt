@@ -38,6 +38,7 @@ elseif(APPLE AND CMAKE_SYSTEM_NAME STREQUAL "iOS")
 endif()
 
 include("${CMAKE_CURRENT_LIST_DIR}/cmake/libraries.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/cmake/buildsettings.cmake")
 
 include_directories("${CMAKE_CURRENT_LIST_DIR}")
 

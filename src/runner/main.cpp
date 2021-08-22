@@ -2,7 +2,7 @@
 
 #include "nodes/create/create.h"
 
-int main(int argv, char* args[]) {
+int main(int, char*[]) {
     std::cout << "Runner\n";
 
     test();
