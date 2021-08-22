@@ -1,12 +1,14 @@
 #include <iostream>
 
 #include "version.h"
-#include "nodes/create/create.h"
+#include "runner.h"
 
-int main(int, char*[]) {
-    std::cout << "Runner\n" << PROJECT_NAME << " " << PROJECT_VERSION;
+int main(int argv, char* args[]) {
+    std::cout << "Starting runner...\n" << PROJECT_NAME << '\n' << PROJECT_NAME << '\n';
 
-    test();
+    texturegenerator::runner runner(argv, args);
+
+    std::cout << "Runner complete.\n";
 
     return 0;
 }

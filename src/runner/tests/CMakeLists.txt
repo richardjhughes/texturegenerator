@@ -1,6 +1,7 @@
 add_executable(
     "${RUNNER_TEST_PROJECT_NAME}"
     main.cpp
+    runner.cpp
 )
 
 target_link_libraries(

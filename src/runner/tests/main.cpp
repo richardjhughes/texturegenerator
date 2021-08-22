@@ -7,8 +7,3 @@ int main(int argv, char* args[])
 
     return session.run(argv, args);
 }
-
-TEST_CASE("test test")
-{
-    REQUIRE(true);
-}

@@ -10,8 +10,11 @@ target_link_libraries(
 
 target_sources(
     "${RUNNER_PROJECT_NAME}"
+	PUBLIC
+		runner.h
     PRIVATE
         main.cpp
+		runner.cpp
 )
 
 install(
