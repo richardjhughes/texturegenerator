@@ -7,3 +7,9 @@ target_sources(
     PRIVATE
         create.cpp
 )
+
+target_link_libraries(
+    "${NODES_CREATE_PROJECT_NAME}"
+    PRIVATE
+        "${NODES_SHARED_PROJECT_NAME}"
+)

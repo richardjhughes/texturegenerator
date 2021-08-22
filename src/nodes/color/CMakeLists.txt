@@ -7,3 +7,9 @@ target_sources(
     PRIVATE
         color.cpp
 )
+
+target_link_libraries(
+    "${NODES_COLOR_PROJECT_NAME}"
+    PRIVATE
+        "${NODES_SHARED_PROJECT_NAME}"
+)

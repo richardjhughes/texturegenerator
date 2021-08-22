@@ -6,7 +6,12 @@
 int main(int argv, char* args[]) {
     std::cout << "Starting runner...\n" << PROJECT_NAME << '\n' << PROJECT_NAME << '\n';
 
-    texturegenerator::runner runner(argv, args);
+    std::vector<std::string> arguments;
+    for (auto i {0}; i < argv; ++i) {
+        arguments.push_back(args[i]);
+    }
+
+    texturegenerator::runner runner(arguments);
 
     std::cout << "Runner complete.\n";
 
