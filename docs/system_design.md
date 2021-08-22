@@ -6,6 +6,20 @@ The calling of nodes is controlled by a graph. This graph is passed to the first
 
 The graph can be created by either a UI or in plain text.
 
+A node has three types of inputs and two types of outputs:
+
+#### Inputs
+1. Graph
+   1. Origin - The point in space the function should act on. This acts as the _bottom left_ of the frame
+   2. Frame width - The number of pixels wide that should be generated
+   3. Frame height - The number of pixels high that should be generated
+2. Socket
+3. Parameters
+
+#### Outputs
+1. Socket
+2. Preview
+
 ## Image Generation
 Images are generated either on the CPU or the GPU. The GPU will be utilized if a GPU is available, else the CPU will be used. If a node only supports a GPU but a GPU is not available, the node will simply pass the input to the output.
 
