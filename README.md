@@ -8,6 +8,8 @@ This system handles only the texture generation. UIs will be handled in separate
 # Documentation
  - [Building](docs/building.md)
  - [System Design](docs/system_design.md)
+ - [Nodes](docs/nodes.md)
+ - [Data Types](docs/data_types.md)
 
 ## Build Status
 ### Nighty
