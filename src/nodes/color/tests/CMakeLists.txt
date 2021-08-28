@@ -9,6 +9,7 @@ add_executable(
 target_link_libraries(
     "${NODES_COLOR_TEST_PROJECT_NAME}"
     Catch2::Catch2
+    glm::glm
     "${NODES_COLOR_PROJECT_NAME}"
 )
 

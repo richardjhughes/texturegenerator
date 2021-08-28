@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <memory>
+#include <glm/vec4.hpp>
 
 #include "socket.h"
 
@@ -18,6 +19,6 @@ namespace texturegenerator::shared::graph {
         // sockets: the input sockets
         // returns: the output sockets
         [[nodiscard]]
-        virtual socket_list run(int32_t origin, uint32_t frame_width, uint32_t frame_height, const socket_list& sockets) = 0;
+        virtual socket_list run(glm::vec4 origin, uint32_t frame_width, uint32_t frame_height, const socket_list& sockets) = 0;
     };
 }
