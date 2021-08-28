@@ -1,9 +1,18 @@
 #pragma once
 
-#include <cstdint>
-
-#include "nodes/shared/color.h"
+#include "nodes/shared/graph/node.h"
+#include "nodes/shared/graphics/color.h"
 
 namespace texturegenerator::nodes::color {
-    void run(const shared::color& color, int32_t origin, uint32_t frame_width, uint32_t frame_height);
+    class color final : public shared::graph::node {
+    public:
+        // Returns a constant color in a frame sized `frame_width * frame_height`
+        // as a constant color is generated, the origin is ignored
+        // Expected input sockets:
+        // * None
+        // Output sockets:
+        // * The generated color
+        [[nodiscard]]
+        socket_list run(int32_t origin, uint32_t frame_width, uint32_t frame_height, const socket_list& sockets) override;
+    };
 }
