@@ -4,3 +4,4 @@ target_link_libraries("${NODES_SHARED_PROJECT_NAME}" glm::glm)
 
 add_subdirectory("graph")
 add_subdirectory("graphics")
+add_subdirectory("tests")
