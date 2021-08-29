@@ -1,8 +1,8 @@
 #pragma once
 
-#include <vector>
+#include <memory>
 
-#include "node.h"
+#include "factory.h"
 
 namespace texturegenerator::shared::graph {
     // A graph represents a group of nodes that are connected by
@@ -15,7 +15,15 @@ namespace texturegenerator::shared::graph {
     // as parallel as it can.
     class graph
     {
+    public:
+        graph(std::unique_ptr<factory> factory) {
+            if (!factory) {
+                throw std::invalid_argument("factory is nullptr.");
+            }
+
+            this->_factory = std::move(factory);
+        }
     private:
-        std::vector<node> _nodes;
+        std::unique_ptr<factory> _factory;
     };
 }

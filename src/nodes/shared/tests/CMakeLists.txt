@@ -21,5 +21,6 @@ target_include_directories(
 set("TEST_DATA_DIRECTORY" "${CMAKE_CURRENT_LIST_DIR}")
 
 add_subdirectory("graph")
+add_subdirectory("graphics")
 
 catch_discover_tests("${NODES_SHARED_TEST_PROJECT_NAME}")
