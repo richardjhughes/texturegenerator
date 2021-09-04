@@ -2,7 +2,7 @@
 
 #include <variant>
 #include <vector>
-#include <mutex>
+#include <shared_mutex>
 #include <optional>
 
 #include "nodes/shared/graphics/color.h"
@@ -17,7 +17,7 @@ namespace texturegenerator::shared::graph {
         // write a copy of the data to the socket
         template <typename T>
         void write(T data) noexcept {
-            std::scoped_lock<std::mutex> l(this->_mutex);
+            std::unique_lock<std::shared_mutex> l(this->_mutex);
 
             this->_data = data;
         }
@@ -25,7 +25,7 @@ namespace texturegenerator::shared::graph {
         // reads a copy of the data from the socket
         template <typename T>
         std::optional<T> read() const noexcept {
-            std::scoped_lock<std::mutex> l(this->_mutex);
+            std::shared_lock<std::shared_mutex> l(this->_mutex);
 
             try {
                 T t = std::get<T>(this->_data);
@@ -37,7 +37,7 @@ namespace texturegenerator::shared::graph {
         }
 
     private:
-        mutable std::mutex _mutex;
+        mutable std::shared_mutex _mutex;
 
         // only types in this variant are valid values for sockets to read/write
         std::variant<

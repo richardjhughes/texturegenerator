@@ -119,9 +119,16 @@ TEST_CASE("read - reads data in multiple threads - reads successfully", "[shared
         }
     };
 
-    auto read_data = [&s, expected](){
-        for (auto i {0}; i < 100000; ++i) {
+    std::mutex mutex;
+
+    auto read_data = [&s, &mutex, expected](){
+        for (auto i {0}; i < 10000; ++i) {
             auto result = s.read<std::vector<graphics::color>>();
+
+            // Catch2 macros are not thread safe
+            // See: https://github.com/catchorg/Catch2/blob/devel/docs/limitations.md#thread-safe-assertions
+            std::scoped_lock<std::mutex> lock(mutex);
+
             REQUIRE(result);
             REQUIRE(expected.size() == result->size());
             INFO(std::to_string(expected[0].r) + " : " + std::to_string(result->at(0).r));
