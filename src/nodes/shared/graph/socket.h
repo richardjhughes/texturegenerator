@@ -11,8 +11,7 @@ namespace texturegenerator::shared::graph {
     // A socket represents an input or output from a node containing
     // some form of data. A node can accept sockets as inputs and/or
     // outputs. This class is thread safe.
-    class socket
-    {
+    class socket final {
     public:
         // write a copy of the data to the socket
         template <typename T>

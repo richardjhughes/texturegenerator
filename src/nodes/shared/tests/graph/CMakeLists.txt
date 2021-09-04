@@ -5,3 +5,5 @@ target_sources(
         graph.cpp
         socket.cpp
 )
+
+add_subdirectory("sockets")
