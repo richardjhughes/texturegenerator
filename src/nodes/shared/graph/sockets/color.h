@@ -43,6 +43,10 @@ namespace texturegenerator::shared::graph::sockets {
         std::uint32_t _frame_height {0};
         socket _socket;
 
+        // allocates the needed data in the socket
         void construct_socket() noexcept;
+
+        // fills the socket with the color
+        void fill_socket(const graphics::color& color) noexcept;
     };
 }

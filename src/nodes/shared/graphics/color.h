@@ -10,14 +10,18 @@ namespace texturegenerator::shared::graphics {
         uint8_t a {0};
     };
 
-    static inline bool operator ==(const color& lhs, const color& rhs) {
+    static constexpr inline bool operator ==(const color& lhs, const color& rhs) {
         return lhs.r == rhs.r &&
                lhs.g == rhs.g &&
                lhs.b == rhs.b &&
                lhs.a == rhs.a;
     }
 
-    static inline bool operator !=(const color& lhs, const color& rhs) {
+    static constexpr inline bool operator !=(const color& lhs, const color& rhs) {
         return !(lhs == rhs);
+    }
+
+    namespace colors {
+        static constexpr color black { 0, 0, 0, 0, };
     }
 }
