@@ -27,7 +27,7 @@ namespace texturegenerator::shared::graph {
             std::shared_lock<std::shared_mutex> l(this->_mutex);
 
             try {
-                T t = std::get<T>(this->_data);
+                auto t = std::get<T>(this->_data);
                 return t;
             }
             catch (const std::exception&) {

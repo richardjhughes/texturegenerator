@@ -6,11 +6,13 @@ target_sources(
         socket.h
         node_types.h
         factory.h
+        parameter.h
     PRIVATE
         graph.cpp
         node.cpp
         socket.cpp
         factory.cpp
+        parameter.cpp
 )
 
 add_subdirectory("sockets")
