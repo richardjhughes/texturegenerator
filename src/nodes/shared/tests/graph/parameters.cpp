@@ -3,7 +3,7 @@
 #include <atomic>
 
 #include "catch2/catch.hpp"
-#include "nodes/shared/graph/parameter.h"
+#include "nodes/shared/graph/parameters.h"
 #include "nodes/shared/graphics/color.h"
 
 using namespace texturegenerator::shared::graph;
@@ -14,7 +14,7 @@ using namespace texturegenerator::shared;
 //////////
 
 TEST_CASE("set(T) - sets data - sets successfully", "[shared/graph/socket]") {
-    parameter p;
+    parameters p;
 
     auto key = "my key";
 
@@ -33,7 +33,7 @@ TEST_CASE("set(T) - sets data - sets successfully", "[shared/graph/socket]") {
 //////////
 
 TEST_CASE("get - unknown key - returns error", "[shared/graph/socket]") {
-    parameter p;
+    parameters p;
 
     auto key = "my key";
 
@@ -47,7 +47,7 @@ TEST_CASE("get - unknown key - returns error", "[shared/graph/socket]") {
 }
 
 TEST_CASE("get - known key, but invalid type - returns error", "[shared/graph/socket]") {
-    parameter p;
+    parameters p;
 
     auto key = "my key";
 
@@ -61,7 +61,7 @@ TEST_CASE("get - known key, but invalid type - returns error", "[shared/graph/so
 }
 
 TEST_CASE("get - valid inputs - gets value", "[shared/graph/socket]") {
-    parameter p;
+    parameters p;
 
     auto key = "my key";
 

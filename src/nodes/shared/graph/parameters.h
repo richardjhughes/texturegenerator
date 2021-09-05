@@ -8,10 +8,10 @@
 #include "nodes/shared/graphics/color.h"
 
 namespace texturegenerator::shared::graph {
-    // A parameter represents what is passed into a node from configurable
-    // input. For instance, it could be a color, a position or a string value.
-    // This object is NOT thread safe.
-    class parameter {
+    // Parameters represents what is passed into a node from configurable
+    // input. For instance, a parameter could be a color, a position or a
+    // string value. This object is NOT thread safe.
+    class parameters {
     public:
         using variant_type = std::variant<graphics::color, int>;
 

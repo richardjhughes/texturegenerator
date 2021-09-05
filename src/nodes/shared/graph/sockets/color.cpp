@@ -12,18 +12,19 @@ namespace texturegenerator::shared::graph::sockets {
         // is what we need
         color_data.resize(needed_bytes);
 
-        this->_socket.write(color_data);
+        this->_socket = std::make_shared<socket>();
+        this->_socket->write(color_data);
 
         // default to black
-        this->fill_socket(graphics::colors::black);
+        this->set_color(graphics::colors::black);
     }
 
-    void color::fill_socket(const graphics::color& color) noexcept {
-        auto data = this->_socket.read<color::type>();
+    void color::set_color(const graphics::color& color) noexcept {
+        auto data = this->_socket->read<color::type>();
         assert(data && "No color data in socket.");
 
         std::fill(data->begin(), data->end(), color);
 
-        this->_socket.write(*data);
+        this->_socket->write(*data);
     }
 }

@@ -5,7 +5,10 @@ using namespace texturegenerator::shared::graph;
 
 class test_node : public node {
     [[nodiscard]]
-    std::optional<socket_list> run(glm::vec4 , uint32_t , uint32_t , const socket_list& ) noexcept override {
+    std::optional<socket_list> run(glm::vec4,
+                                   uint32_t, uint32_t,
+                                   const parameters&,
+                                   const socket_list&) noexcept override {
         return {};
     }
 

@@ -4,7 +4,7 @@ target_sources(
         factory.cpp
         graph.cpp
         socket.cpp
-        parameter.cpp
+        parameters.cpp
 )
 
 add_subdirectory("sockets")

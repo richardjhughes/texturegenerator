@@ -1,4 +1,4 @@
-#include "parameter.h"
+#include "parameters.h"
 
 namespace texturegenerator::shared::graph {
 

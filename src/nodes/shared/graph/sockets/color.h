@@ -26,6 +26,19 @@ namespace texturegenerator::shared::graph::sockets {
             this->construct_socket();
         }
 
+        color(std::uint32_t frame_width, std::uint32_t frame_height, std::shared_ptr<socket> socket)
+            : _frame_width(frame_width),
+              _frame_height(frame_height),
+              _socket(std::move(socket)) {
+            if (this->_frame_width == 0) {
+                throw std::invalid_argument("`frame_width` is 0.");
+            }
+
+            if (this->_frame_height == 0) {
+                throw std::invalid_argument("`frame_height` is 0.");
+            }
+        }
+
         uint32_t get_frame_width() const noexcept {
             return this->_frame_width;
         }
@@ -34,19 +47,29 @@ namespace texturegenerator::shared::graph::sockets {
             return this->_frame_height;
         }
 
-        const socket& get_socket() const noexcept {
+        const std::shared_ptr<socket>& get_socket() const noexcept {
             return this->_socket;
         }
+
+        // returns the color data from the socket
+        // if the socket does not contain color data,
+        // an assert is triggered
+        type get_data() const noexcept {
+            auto data = this->_socket->read<type>();
+            assert(data);
+
+            return *data;
+        }
+
+        // fills the socket with the color
+        void set_color(const graphics::color& color) noexcept;
 
     private:
         std::uint32_t _frame_width {0};
         std::uint32_t _frame_height {0};
-        socket _socket;
+        std::shared_ptr<socket> _socket;
 
         // allocates the needed data in the socket
         void construct_socket() noexcept;
-
-        // fills the socket with the color
-        void fill_socket(const graphics::color& color) noexcept;
     };
 }

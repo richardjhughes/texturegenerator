@@ -13,7 +13,10 @@ namespace texturegenerator::nodes::color {
         // Output sockets:
         // * The generated color
         [[nodiscard]]
-        std::optional<socket_list> run(glm::vec4 origin, uint32_t frame_width, uint32_t frame_height, const socket_list& sockets) noexcept override;
+        std::optional<socket_list> run(glm::vec4 origin,
+                                       uint32_t frame_width, uint32_t frame_height,
+                                       const shared::graph::parameters& parameters,
+                                       const socket_list& sockets) noexcept override;
 
         [[nodiscard]]
         shared::graph::node_types get_node_type() noexcept override {
