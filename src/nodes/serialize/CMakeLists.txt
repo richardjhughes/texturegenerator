@@ -4,6 +4,7 @@ target_sources(
     "${NODES_SERIALIZE_PROJECT_NAME}"
     PUBLIC
         serialize.h
+        image_format.h
     PRIVATE
         serialize.cpp
 )

@@ -13,7 +13,9 @@ namespace texturegenerator::shared::graph {
     // string value. This object is NOT thread safe.
     class parameters {
     public:
-        using variant_type = std::variant<graphics::color, int>;
+        using variant_type = std::variant<graphics::color,
+                                          int32_t,
+                                          uint32_t>;
 
         // sets the data
         // any string is allowed as a key
