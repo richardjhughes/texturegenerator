@@ -13,3 +13,5 @@ target_link_libraries(
     PRIVATE
         "${NODES_SHARED_PROJECT_NAME}"
 )
+
+add_subdirectory("tests")

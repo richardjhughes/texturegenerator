@@ -3,5 +3,6 @@
 namespace texturegenerator::shared::graph {
     enum class node_types {
         color,
+        serialize,
     };
 }
