@@ -2,6 +2,8 @@ target_sources(
     "${NODES_SHARED_PROJECT_NAME}"
     PUBLIC
         color.h
+        binary_stream.h
     PRIVATE
         color.cpp
+        binary_stream.cpp
 )

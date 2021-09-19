@@ -1,8 +1,10 @@
 #include "catch2/catch.hpp"
 #include "nodes/serialize/serialize.h"
 #include "nodes/serialize/image_format.h"
+#include "nodes/shared/graph/sockets/binary_stream.h"
 
 using namespace texturegenerator;
+using namespace texturegenerator::shared::graph;
 using namespace texturegenerator::nodes::serialize;
 
 //////////
@@ -54,4 +56,39 @@ TEST_CASE("run - valid parameters - does not return error", "[nodes/serialize/se
     auto result = node.run(origin, frame_width, frame_height, parameters, sockets_in);
 
     REQUIRE(result);
+}
+
+TEST_CASE("run - valid parameters - no input sockets, serializes default color", "[nodes/serialize/serialize]") {
+    serialize node;
+
+    auto origin { glm::vec4() };
+    auto frame_width { 32u };
+    auto frame_height { 64u };
+    auto image_format { image_formats::PNG };
+
+    shared::graph::parameters parameters;
+    parameters.set("image_format", static_cast<uint32_t>(image_format));
+
+    std::vector<std::shared_ptr<shared::graph::socket>> sockets_in;
+
+    auto result = node.run(origin, frame_width, frame_height, parameters, sockets_in);
+
+    REQUIRE(result);
+    REQUIRE(!result->empty());
+
+    auto sockets = *result;
+    sockets::binary_stream s(sockets[0]);
+
+    auto data = s.get_data();
+
+    // RGBA
+    auto expected_length = frame_width * frame_height * 4;
+    REQUIRE(expected_length == data.size());
+
+    for (auto i {0u}; i < expected_length; i += 4) {
+        REQUIRE(serialize::default_color.r == static_cast<uint8_t>(data[i + 0]));
+        REQUIRE(serialize::default_color.g == static_cast<uint8_t>(data[i + 1]));
+        REQUIRE(serialize::default_color.b == static_cast<uint8_t>(data[i + 2]));
+        REQUIRE(serialize::default_color.a == static_cast<uint8_t>(data[i + 3]));
+    }
 }

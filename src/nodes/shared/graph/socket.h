@@ -41,6 +41,7 @@ namespace texturegenerator::shared::graph {
         // only types in this variant are valid values for sockets to read/write
         std::variant<
             std::vector<graphics::color>,
+            std::vector<std::byte>,
             std::vector<uint8_t>
         > _data;
     };

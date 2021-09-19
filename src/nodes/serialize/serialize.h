@@ -1,10 +1,13 @@
 #pragma once
 
 #include "nodes/shared/graph/node.h"
+#include "nodes/shared/graphics/color.h"
 
 namespace texturegenerator::nodes::serialize {
     class serialize : public shared::graph::node {
     public:
+        static constexpr auto default_color = shared::graphics::colors::black;
+
         // Serializes the passed color streams into a known image format
         // NOTE: The output stream is not saved to disk. It is up to the
         // caller to save the output stream if desired.
