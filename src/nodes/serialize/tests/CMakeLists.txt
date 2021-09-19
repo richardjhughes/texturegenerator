@@ -8,15 +8,17 @@ add_executable(
 
 target_link_libraries(
     "${NODES_SERIALIZE_TEST_PROJECT_NAME}"
-    Catch2::Catch2
-    glm::glm
-    "${NODES_SERIALIZE_PROJECT_NAME}"
+    PRIVATE
+        Catch2::Catch2
+        glm::glm
+        "${NODES_SHARED_PROJECT_NAME}"
+        "${NODES_SERIALIZE_PROJECT_NAME}"
 )
 
 target_include_directories(
     "${NODES_SERIALIZE_TEST_PROJECT_NAME}"
     SYSTEM PRIVATE
-    "${CATCH2_INCLUDE_DIRS}"
+        "${CATCH2_INCLUDE_DIRS}"
 )
 
 set("TEST_DATA_DIRECTORY" "${CMAKE_CURRENT_LIST_DIR}")

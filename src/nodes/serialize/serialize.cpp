@@ -1,3 +1,5 @@
+#include <sail-c++/sail-c++.h>
+
 #include "serialize.h"
 #include "image_format.h"
 
@@ -13,6 +15,8 @@ namespace texturegenerator::nodes::serialize {
         if (!image_format_parameter) {
             return {};
         }
+
+        sail::image image("");
 
         return sockets;
     }
