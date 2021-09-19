@@ -1,7 +1,9 @@
-#include <sail-c++/sail-c++.h>
+#include <filesystem>
+#include <iostream>
 
 #include "serialize.h"
 #include "image_format.h"
+#include "nodes/shared/apis/image/image.h"
 #include "nodes/shared/graph/sockets/binary_stream.h"
 
 namespace texturegenerator::nodes::serialize {
@@ -17,25 +19,20 @@ namespace texturegenerator::nodes::serialize {
             return {};
         }
 
-        //sail::image image(nullptr, SailPixelFormat::SAIL_PIXEL_FORMAT_BPP48, 100, 100);
-
-        std::vector<std::byte> image_data;
-
         auto frame_size { frame_width * frame_height };
-        auto pixel_count { frame_size * 4 };
 
-        // RGBA
-        image_data.resize(pixel_count);
+        std::vector<shared::graphics::color> image_data;
+        image_data.resize(frame_size);
 
-        for (auto i {0u}; i < frame_size; i += 4) {
-            image_data[i + 0] = static_cast<std::byte>(serialize::default_color.r);
-            image_data[i + 1] = static_cast<std::byte>(serialize::default_color.g);
-            image_data[i + 2] = static_cast<std::byte>(serialize::default_color.b);
-            image_data[i + 3] = static_cast<std::byte>(serialize::default_color.a);
+        std::fill(image_data.begin(), image_data.end(), serialize::default_color);
+
+        auto serialized_data = shared::apis::image::serialize_image(image_data, frame_width, frame_height);
+        if (!serialized_data) {
+            return {};
         }
 
         shared::graph::sockets::binary_stream s;
-        s.set_data(image_data);
+        s.set_data(*serialized_data);
 
         sockets.push_back(s.get_socket());
 
