@@ -4,6 +4,8 @@ add_executable(
     "${NODES_SERIALIZE_TEST_PROJECT_NAME}"
     main.cpp
     serialize.cpp
+    util.h
+    util.cpp
 )
 
 target_link_libraries(
@@ -19,8 +21,12 @@ target_include_directories(
     "${NODES_SERIALIZE_TEST_PROJECT_NAME}"
     SYSTEM PRIVATE
         "${CATCH2_INCLUDE_DIRS}"
+        "${CMAKE_CURRENT_BINARY_DIR}" # needed for `test_config.h` below
 )
 
-set("TEST_DATA_DIRECTORY" "${CMAKE_CURRENT_LIST_DIR}")
+file(COPY test_data DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+set(TEST_DATA_PATH \"${CMAKE_CURRENT_BINARY_DIR}/test_data\")
+
+configure_file("test_config.h.in" "test_config.h")
 
 catch_discover_tests("${NODES_SERIALIZE_TEST_PROJECT_NAME}")

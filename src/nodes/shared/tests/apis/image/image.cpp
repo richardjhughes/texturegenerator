@@ -63,7 +63,7 @@ TEST_CASE("serialize_image - valid data - returns serialized data", "[shared/api
 
     auto result = serialize_image(data, width, height);
 
-    auto expected = get_data_from_file("/Users/richardhughes/code/snowmeltarcade/texturegenerator/src/nodes/shared/tests/test_data/16x16_red.png");
+    auto expected = get_data_from_file("16x16_red.png");
 
     REQUIRE(result);
     REQUIRE(expected.size() == result->size());

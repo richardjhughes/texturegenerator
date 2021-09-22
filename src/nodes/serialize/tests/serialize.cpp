@@ -1,4 +1,5 @@
 #include "catch2/catch.hpp"
+#include "util.h"
 #include "nodes/serialize/serialize.h"
 #include "nodes/serialize/image_format.h"
 #include "nodes/shared/graph/sockets/binary_stream.h"
@@ -81,14 +82,10 @@ TEST_CASE("run - valid parameters - no input sockets, serializes default color",
 
     auto data = s.get_data();
 
-    // RGBA
-    auto expected_length = frame_width * frame_height * 4;
-    REQUIRE(expected_length == data.size());
+    auto expected = get_data_from_file("32x64_default_color.png");
 
-    for (auto i {0u}; i < expected_length; i += 4) {
-        REQUIRE(serialize::default_color.r == static_cast<uint8_t>(data[i + 0]));
-        REQUIRE(serialize::default_color.g == static_cast<uint8_t>(data[i + 1]));
-        REQUIRE(serialize::default_color.b == static_cast<uint8_t>(data[i + 2]));
-        REQUIRE(serialize::default_color.a == static_cast<uint8_t>(data[i + 3]));
+    REQUIRE(expected.size() == data.size());
+    for (auto i {0u}; i < expected.size(); ++i) {
+        REQUIRE(static_cast<std::byte>(expected[i]) == data[i]);
     }
 }

@@ -18,16 +18,16 @@ target_include_directories(
     "${NODES_SHARED_TEST_PROJECT_NAME}"
     SYSTEM PRIVATE
     "${CATCH2_INCLUDE_DIRS}"
-)
-
-target_compile_definitions(
-    "${NODES_SHARED_TEST_PROJECT_NAME}"
-    PRIVATE
-        TEST_DATA_DIRECTORY=${CMAKE_CURRENT_LIST_DIR}/test_data
+    "${CMAKE_CURRENT_BINARY_DIR}" # needed for `test_config.h` below
 )
 
 add_subdirectory("graph")
 add_subdirectory("graphics")
 add_subdirectory("apis")
+
+file(COPY test_data DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+set(TEST_DATA_PATH \"${CMAKE_CURRENT_BINARY_DIR}/test_data\")
+
+configure_file("test_config.h.in" "test_config.h")
 
 catch_discover_tests("${NODES_SHARED_TEST_PROJECT_NAME}")
