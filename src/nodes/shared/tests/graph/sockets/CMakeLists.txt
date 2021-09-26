@@ -3,4 +3,5 @@ target_sources(
     PRIVATE
         color.cpp
         binary_stream.cpp
+        color_stream.cpp
 )
