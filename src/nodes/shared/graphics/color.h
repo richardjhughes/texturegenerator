@@ -22,7 +22,11 @@ namespace texturegenerator::shared::graphics {
     }
 
     namespace colors {
-        static constexpr color black { 0, 0, 0, 0, };
+        static constexpr color transparent { 0, 0, 0, 0, };
+        static constexpr color black { 0, 0, 0, 255, };
+        static constexpr color white { 255, 255, 255, 255, };
         static constexpr color red { 255, 0, 0, 255, };
+        static constexpr color green { 0, 255, 0, 255, };
+        static constexpr color blue { 0, 0, 255, 255, };
     }
 }

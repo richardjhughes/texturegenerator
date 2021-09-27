@@ -4,4 +4,5 @@ target_sources(
         color.cpp
         binary_stream.cpp
         color_stream.cpp
+        color_channel.cpp
 )

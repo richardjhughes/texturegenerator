@@ -8,7 +8,7 @@ using namespace texturegenerator::shared::graph::sockets;
 /// constructor (socket)
 //////////
 
-TEST_CASE("constructor (socket) - null socket - throws error", "[shared/graph/factory/sockets]") {
+TEST_CASE("constructor (socket) - null socket - throws error", "[shared/graph/factory/sockets/binary_stream]") {
     std::shared_ptr<graph::socket> socket;
 
     try {
@@ -22,7 +22,7 @@ TEST_CASE("constructor (socket) - null socket - throws error", "[shared/graph/fa
     FAIL("Exception not thrown.");
 }
 
-TEST_CASE("constructor (socket) - valid socket - sets socket", "[shared/graph/factory/sockets]") {
+TEST_CASE("constructor (socket) - valid socket - sets socket", "[shared/graph/factory/sockets/binary_stream]") {
     auto socket = std::make_shared<graph::socket>();
 
     binary_stream s(socket);
@@ -36,7 +36,7 @@ TEST_CASE("constructor (socket) - valid socket - sets socket", "[shared/graph/fa
 /// get_data
 //////////
 
-TEST_CASE("get_data - gets data", "[shared/graph/factory/sockets]") {
+TEST_CASE("get_data - gets data", "[shared/graph/factory/sockets/binary_stream]") {
     std::vector<std::byte> data { (std::byte)0x00, (std::byte)0x01, (std::byte)0x02, (std::byte)0x03, (std::byte)0x04, };
 
     auto socket = std::make_shared<graph::socket>();
@@ -53,7 +53,7 @@ TEST_CASE("get_data - gets data", "[shared/graph/factory/sockets]") {
 /// get_data
 //////////
 
-TEST_CASE("set_data - valid data - sets data", "[shared/graph/factory/sockets]") {
+TEST_CASE("set_data - valid data - sets data", "[shared/graph/factory/sockets/binary_stream]") {
     std::vector<std::byte> data { (std::byte)0x00, (std::byte)0x01, (std::byte)0x02, (std::byte)0x03, (std::byte)0x04, };
 
     binary_stream s;

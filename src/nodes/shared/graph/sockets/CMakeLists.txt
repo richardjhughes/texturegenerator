@@ -3,9 +3,11 @@ target_sources(
     PUBLIC
         color.h
         color_stream.h
+        color_channel.h
         binary_stream.h
     PRIVATE
         color.cpp
         color_stream.cpp
+        color_channel.cpp
         binary_stream.cpp
 )
